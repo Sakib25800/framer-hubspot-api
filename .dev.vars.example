@@ -1,0 +1,11 @@
+CLIENT_ID=XXXXXXXX
+CLIENT_SECRET=XXXXXXXX
+
+PLUGIN_URI=https://localhost:5173
+REDIRECT_URI=https://localhost:3001/auth/redirect
+
+AUTHORIZE_ENDPOINT=https://app-eu1.hubspot.com/oauth/authorize
+TOKEN_ENDPOINT=https://api.hubapi.com/oauth/v1/token
+
+SCOPE="oauth forms conversations.read"
+
