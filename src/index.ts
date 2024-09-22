@@ -6,7 +6,7 @@ async function handleRequest(request: Request, env: Env) {
 
 	// Generate an authorization URL to login into the provider, and a set of
 	// read and write keys for retrieving the access token later on.
-	if (request.method === 'POST' && requestUrl.pathname.startsWith('/auth/authorize')) {
+	if (request.method === 'POST' && requestUrl.pathname.startsWith('/authorize')) {
 		const readKey = generateRandomId();
 		const writeKey = generateRandomId();
 
@@ -43,7 +43,7 @@ async function handleRequest(request: Request, env: Env) {
 	// Once the user has been authorized via login page, the provider will
 	// redirect them back this URL with an access code (not an access token) and
 	// the write key we stored in the state param.
-	if (request.method === 'GET' && requestUrl.pathname.startsWith('/auth/redirect')) {
+	if (request.method === 'GET' && requestUrl.pathname.startsWith('/redirect')) {
 		const authorizationCode = requestUrl.searchParams.get('code');
 		const writeKey = requestUrl.searchParams.get('state');
 
@@ -103,7 +103,7 @@ async function handleRequest(request: Request, env: Env) {
 		});
 	}
 
-	if (request.method === 'POST' && requestUrl.pathname.startsWith('/auth/poll')) {
+	if (request.method === 'POST' && requestUrl.pathname.startsWith('/poll')) {
 		const readKey = requestUrl.searchParams.get('readKey');
 
 		if (!readKey) {
@@ -136,7 +136,7 @@ async function handleRequest(request: Request, env: Env) {
 		});
 	}
 
-	if (request.method === 'POST' && requestUrl.pathname.startsWith('/auth/refresh')) {
+	if (request.method === 'POST' && requestUrl.pathname.startsWith('/refresh')) {
 		const refreshToken = requestUrl.searchParams.get('code');
 
 		if (!refreshToken) {
