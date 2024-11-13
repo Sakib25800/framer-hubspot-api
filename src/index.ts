@@ -14,6 +14,7 @@ async function handleRequest(request: Request, env: Env) {
 		authorizeParams.append('client_id', env.CLIENT_ID);
 		authorizeParams.append('redirect_uri', env.REDIRECT_URI);
 		authorizeParams.append('scope', env.SCOPE);
+		authorizeParams.append('optional_scope', env.OPTIONAL_SCOPE);
 
 		// The write key is stored in the `state` param since this will be
 		// persisted through the entire OAuth flow.
